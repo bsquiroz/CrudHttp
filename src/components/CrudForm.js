@@ -62,7 +62,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
                 <input
                     type="text"
                     name="task"
-                    placeholder="Descripciín de la tarea"
+                    placeholder="Descripción de la tarea"
                     onChange={handleChange}
                     value={form.task}
                 />

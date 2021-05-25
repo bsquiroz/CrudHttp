@@ -13,7 +13,7 @@ const CrudApi = () => {
     const [loading, setLoading] = useState(false);
 
     let api = helpHttp();
-    let url = "https://todos-go.herokuapp.com/api/todos";
+    const url = "https://todos-go.herokuapp.com/api/todos";
 
     useEffect(() => {
         setLoading(true);
@@ -60,7 +60,7 @@ const CrudApi = () => {
         };
         api.put(endpoint, options).then((res) => {
             if (!res.err) {
-                let newData = db.map((el) => (el.id === data.id ? data : el));
+                let newData = db.map((el) => (el.id === res.id ? res : el));
                 setDb(newData);
             } else {
                 setError(res);
@@ -69,6 +69,7 @@ const CrudApi = () => {
     };
 
     const updateData = (data) => {
+        console.log(data);
         let endpoint = `${url}/${data.id}`;
         let options = {
             body: data,
@@ -76,7 +77,7 @@ const CrudApi = () => {
         };
         api.put(endpoint, options).then((res) => {
             if (!res.err) {
-                let newData = db.map((el) => (el.id === data.id ? data : el));
+                let newData = db.map((el) => (el.id === res.id ? res : el));
                 setDb(newData);
                 Alert2.fire(
                     "😁",
